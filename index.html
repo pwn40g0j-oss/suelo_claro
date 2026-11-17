@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#245b40">
+  <meta name="description" content="Suelo Claro: organiza recomendaciones de fertilización del café y calcula cantidades para tu lote. Proyecto académico de I+D+i.">
+  <title>Suelo Claro · Calculadora para café</title>
+  <style>:root{--ink:#18392d;--muted:#647369;--green:#245b40;--lime:#d8eea4;--paper:#f7f7ef;--line:#dce3d5;--white:#fff;--warn:#80521a}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select,textarea{font:inherit}button,a,input,select,textarea{ -webkit-tap-highlight-color:transparent}button{cursor:pointer}a{color:var(--green)}header{background:#fff;border-bottom:1px solid var(--line)}.header-inner{max-width:1180px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:20px 28px;gap:15px}.brand{display:flex;align-items:center;gap:11px;font-size:21px;font-weight:760;letter-spacing:-.6px}.brand small{display:block;font-size:11px;font-weight:500;letter-spacing:1px;color:var(--muted);text-transform:uppercase}.mark{display:grid;place-items:center;width:44px;height:44px;background:var(--green);border-radius:14px;color:var(--lime)}.tag{border:1px solid var(--line);border-radius:40px;padding:5px 12px;font-size:12px;white-space:nowrap}.wrap{max-width:1180px;padding:0 28px;margin:auto}.hero{display:flex;justify-content:space-between;gap:30px;align-items:center;padding:40px 0 28px}.eyebrow{font-size:11px;letter-spacing:1.7px;font-weight:750;text-transform:uppercase;color:var(--green)}h1{font:normal clamp(30px,4vw,46px)/1.14 Georgia,serif;letter-spacing:-1.4px;margin:10px 0 14px;max-width:700px}h2{font-size:22px;line-height:1.25;margin:0 0 8px;letter-spacing:-.5px}h3{font-size:16px;margin:0 0 8px}p{margin:0 0 14px}.muted{color:var(--muted)}.hero p{max-width:660px;color:var(--muted)}.hero-art{width:160px;flex-shrink:0}.tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin-bottom:28px;overflow:auto}.tabs button{border:0;background:none;padding:13px 18px;color:var(--muted);white-space:nowrap;border-bottom:3px solid transparent}.tabs button[aria-selected=true]{color:var(--green);font-weight:700;border-color:var(--green)}.layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:24px;align-items:start}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px;margin-bottom:22px}.card-head{display:flex;justify-content:space-between;gap:12px;align-items:start;margin-bottom:24px}.step{font-size:11px;letter-spacing:1px;font-weight:700;margin-bottom:8px;color:var(--green)}label{display:block;font-size:13px;font-weight:650;margin-bottom:7px}input,select,textarea{width:100%;min-width:0;padding:11px 12px;background:#fff;border:1px solid #cbd5c7;border-radius:9px;color:var(--ink)}input:focus,select:focus,textarea:focus{outline:3px solid #d8eea4;outline-offset:1px}input[readonly]{background:#f6f7f2;color:#5a675e}textarea{resize:vertical;min-height:85px}.field{margin-bottom:17px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}.hint{display:block;font-size:12px;color:var(--muted);margin:5px 0 0}.btn{border:1px solid var(--green);border-radius:9px;padding:11px 18px;background:var(--green);color:#fff;font-weight:650;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;gap:8px}.btn:hover{background:#1a4631}.btn.secondary{background:#fff;color:var(--green);border-color:var(--line)}.btn.secondary:hover{background:#f2f5eb}.btn.small{font-size:13px;padding:7px 12px}.btn:disabled{opacity:.5;cursor:not-allowed}.full{width:100%}.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}.intro-note{font-size:13px;color:var(--muted);border-left:3px solid #c8daa9;padding-left:12px;margin-bottom:22px}.result{background:#eaf0de;min-height:365px}.empty{padding:30px 10px;text-align:center}.empty svg{color:var(--green);margin-bottom:14px}.empty p{font-size:14px;max-width:340px;margin:8px auto 20px}.pill{display:inline-block;background:#fff;border-radius:30px;padding:5px 12px;font-size:11px;font-weight:700}.product{padding:18px 0;border-bottom:1px solid #ccd6bc}.product:last-child{border:0}.product-name{font-size:17px;font-weight:700;overflow-wrap:anywhere}.qty{font-size:38px;letter-spacing:-1px;font-weight:700;line-height:1.4}.qty small{font-size:18px;letter-spacing:0}.formula{font-size:13px;color:#4f6147}.metadata{font-size:12px;color:#516247;margin-top:20px;overflow-wrap:anywhere}.metadata div{margin:4px 0}.notice{padding:13px 16px;background:#fff3d9;border-radius:10px;font-size:13px;color:var(--warn);margin:15px 0}.status{padding:12px 15px;border-radius:10px;font-size:14px;margin-bottom:18px;background:#e6efd9;border:1px solid #c4d5b2}.status.error{background:#fff0e9;border-color:#e3c1ad;color:#8a3f27}[hidden]{display:none!important}details{border-top:1px solid var(--line);padding-top:15px;margin-top:18px}summary{cursor:pointer;font-size:14px;font-weight:650}.details-body{padding-top:18px}.product-row{background:#f6f7f1;border:1px solid var(--line);border-radius:12px;padding:17px;margin:12px 0}.product-row-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.danger{color:#a54331!important}.text-btn{background:transparent;border:0;padding:4px;font-size:13px;color:var(--green);text-decoration:underline}.plan-item{padding:18px 0;border-bottom:1px solid var(--line)}.plan-item:last-child{border:0}.plan-item h3{overflow-wrap:anywhere}.plan-item p{font-size:13px;color:var(--muted);margin:4px 0;overflow-wrap:anywhere}.guide{max-width:800px}.guide ol{padding-left:23px}.guide li{margin-bottom:13px}.guide p{color:#4b5d50}.guide h2{margin-bottom:18px}.guide h3{margin-top:22px}footer{max-width:1180px;padding:28px;margin:20px auto 0;border-top:1px solid var(--line);font-size:12px;display:flex;justify-content:space-between;gap:18px;color:var(--muted)}.history-row{padding:16px 0;border-bottom:1px solid var(--line);overflow-wrap:anywhere}.history-row p{margin:3px 0;font-size:13px}.saved{font-size:12px;color:var(--muted)}.checkbox{display:flex;gap:10px;align-items:start;font-size:13px;margin:18px 0}.checkbox input{width:18px;flex-shrink:0;margin-top:3px}.tip{font-size:13px;color:var(--muted)}@media(max-width:760px){.header-inner,.wrap{padding-left:18px;padding-right:18px}.hero{padding:28px 0 20px}.hero-art{display:none}.layout{grid-template-columns:1fr;gap:0}.card{padding:21px}.tabs button{padding:12px 13px;font-size:14px}footer{padding:22px 18px;display:block}.tag{font-size:10px;padding:5px 8px}.grid{gap:0 12px}h1{letter-spacing:-.8px}.qty{font-size:34px}}@media(max-width:390px){.grid{grid-template-columns:1fr}.brand{font-size:19px}.header-inner{gap:8px}.card{padding:17px}.tag{display:none}}@media print{header,.hero,.tabs,footer,#calculator-form,.no-print,.actions,#status{display:none!important}.wrap{max-width:none;padding:0}.layout{display:block}.result{background:#fff;border:1px solid #ccc;min-height:0}.card{break-inside:avoid}body{background:#fff;color:#000}#tab-calculator{display:block!important}#tab-plans,#tab-history,#tab-guide{display:none!important}.qty{font-size:28px}}
+</style>
+</head>
+<body>
+<header><div class="header-inner"><div class="brand"><span class="mark" aria-hidden="true"><svg width="27" height="27" viewBox="0 0 32 32" fill="none"><path d="M8 24C5 10 19 5 26 6c1 11-5 22-18 18Z" stroke="currentColor" stroke-width="2"/><path d="m7 26 14-14" stroke="currentColor" stroke-width="2"/></svg></span><span>Suelo Claro<small>Café · Andes, Antioquia</small></span></div><span class="tag">Proyecto académico de I+D+i</span></div></header>
+<main class="wrap">
+<section class="hero"><div><div class="eyebrow">Del análisis a una decisión organizada</div><h1>Tu lote, sus datos.<br>Las cantidades, claras.</h1><p>Consulta el fertilizante indicado en tu plan técnico y calcula cuánto necesitas para tu cultivo de café.</p></div><svg class="hero-art" viewBox="0 0 180 150" fill="none" aria-hidden="true"><ellipse cx="90" cy="133" rx="72" ry="9" fill="#e0e7d2"/><path d="M50 99h80l-12 33H62z" fill="#c5d89e"/><path d="M90 104V44" stroke="#245b40" stroke-width="4"/><path d="M91 78C56 81 48 55 51 42c30 0 42 19 40 36Z" fill="#86ad6a"/><path d="M90 58c-2-30 21-43 40-42 2 25-13 44-40 42Z" fill="#245b40"/><path d="M90 100c0-26 21-35 38-31 0 21-16 33-38 31Z" fill="#568354"/><path d="M68 128h45" stroke="#8eaa67" stroke-width="2"/></svg></section>
+<nav class="tabs" role="tablist" aria-label="Secciones"><button role="tab" id="nav-calculator" aria-controls="tab-calculator" aria-selected="true" data-tab="calculator">Calculadora</button><button role="tab" id="nav-plans" aria-controls="tab-plans" aria-selected="false" tabindex="-1" data-tab="plans">Mis planes técnicos</button><button role="tab" id="nav-history" aria-controls="tab-history" aria-selected="false" tabindex="-1" data-tab="history">Historial</button><button role="tab" id="nav-guide" aria-controls="tab-guide" aria-selected="false" tabindex="-1" data-tab="guide">Cómo funciona</button></nav>
+<div id="status" class="status" role="status" aria-live="polite" hidden></div>
+<section id="tab-calculator" role="tabpanel" aria-labelledby="nav-calculator">
+<div class="layout">
+<form id="calculator-form" class="card" novalidate>
+  <div class="card-head"><div><div class="step">01 / DATOS DEL CULTIVO</div><h2>Calcula para tu lote</h2><p class="muted">Elige el plan y completa los datos.</p></div></div>
+  <div class="field"><label for="plan-select">Plan técnico del lote</label><select id="plan-select"><option value="">Selecciona un plan registrado</option></select><small class="hint">¿Primera vez? <button type="button" class="text-btn" id="go-new-plan">Registra tu recomendación técnica</button>.</small></div>
+  <div class="grid"><div class="field"><label for="lot">Lote</label><input id="lot" maxlength="100" placeholder="Ej. El Arrayán" readonly></div><div class="field"><label for="stage">Etapa del cultivo</label><input id="stage" placeholder="Según el plan" readonly></div></div>
+  <div class="grid"><div class="field"><label for="plants">Número de plantas</label><input id="plants" type="text" inputmode="numeric" placeholder="Ej. 4000" maxlength="14"><small class="hint" id="plants-hint">Necesario si la dosis está en g/planta.</small></div><div class="field"><label for="area">Área del lote en hectáreas</label><input id="area" type="text" inputmode="decimal" placeholder="Ej. 1,5" maxlength="18"><small class="hint" id="area-hint">Necesaria si la dosis está en kg/ha.</small></div></div><p class="hint">Escribe los números sin separadores de miles. Para decimales puedes usar coma o punto.</p>
+  <details><summary>Análisis de suelo · registro opcional</summary><div class="details-body"><p class="tip">Transcribe datos de laboratorio para acompañar el registro. Estos campos no generan ni cambian la dosis del plan.</p><div class="grid"><div class="field"><label for="ph">pH</label><input id="ph" inputmode="decimal" placeholder="Según informe"></div><div class="field"><label for="mo">Materia orgánica (%)</label><input id="mo" inputmode="decimal" placeholder="Según informe"></div><div class="field"><label for="p">Fósforo (mg/kg)</label><input id="p" inputmode="decimal" placeholder="Según informe"></div><div class="field"><label for="k">Potasio (cmolc/kg)</label><input id="k" inputmode="decimal" placeholder="Según informe"></div></div></div></details>
+  <div class="actions"><button class="btn full" type="submit">Calcular cantidades <span aria-hidden="true">→</span></button></div>
+  <p class="hint">El producto y la dosis provienen del plan que registraste. La aplicación calcula cantidades; no diagnostica el suelo.</p>
+  <details class="no-print"><summary>Probar los dos casos del taller</summary><div class="details-body"><p class="tip">Ejemplos de navegación con datos de suelo ficticios. No incluyen fertilizantes ni dosis inventadas.</p><div class="actions"><button type="button" class="btn secondary small" id="demo-a">Caso A · sin recomendación</button><button type="button" class="btn secondary small" id="demo-b">Caso B · completar plan</button></div></div></details>
+</form>
+<aside>
+<section class="card result" id="result" aria-live="polite"><div class="step">02 / RESULTADO</div><div class="empty"><svg width="49" height="49" viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="10" y="5" width="28" height="38" rx="5" stroke="currentColor" stroke-width="2"/><path d="M16 14h16M16 23h4m8 0h4m-16 8h4m8 0h4" stroke="currentColor" stroke-width="2"/></svg><h2>Todo empieza con tu plan</h2><p>Registra una vez la recomendación de tu lote. Luego ingresa el tamaño del cultivo para obtener las cantidades.</p><button type="button" class="btn secondary" id="result-new-plan">Registrar plan técnico</button></div></section>
+<div class="intro-note no-print"><strong>Una herramienta sencilla, con información trazable.</strong><br>Guarda el producto, la dosis, las unidades, la fuente y el responsable de cada recomendación.</div>
+</aside>
+</div></section>
+<section id="tab-plans" role="tabpanel" aria-labelledby="nav-plans" hidden><div class="layout"><form id="plan-form" class="card" novalidate><div class="step">CONFIGURACIÓN INICIAL</div><h2 id="plan-title">Registrar un plan técnico</h2><p class="muted">Copia la recomendación emitida para este lote.</p><p class="intro-note">Usa dosis de producto comercial, no requerimientos de nutrientes puros. Incluye la formulación exacta en el nombre del producto.</p><input id="plan-id" type="hidden">
+<div class="grid"><div class="field"><label for="plan-lot">Nombre del lote</label><input id="plan-lot" required maxlength="100" placeholder="Ej. El Arrayán"></div><div class="field"><label for="plan-stage">Etapa</label><select id="plan-stage"><option>Producción</option><option>Levante</option><option>Renovación</option></select></div></div>
+<div class="field"><label for="plan-analysis">Referencia del análisis de suelo</label><input id="plan-analysis" required maxlength="180" placeholder="Laboratorio y número de informe"></div>
+<div class="field"><label for="plan-analyst">Responsable de la recomendación</label><input id="plan-analyst" required maxlength="180" placeholder="Nombre del profesional o entidad"></div>
+<div class="field"><label for="plan-source">Fuente de la recomendación</label><input id="plan-source" required maxlength="500" placeholder="Informe, fecha y página o enlace"></div>
+<div class="grid"><div class="field"><label for="plan-issued">Fecha de emisión</label><input type="date" id="plan-issued" required></div><div class="field"><label for="plan-until">Válido hasta / revisión técnica</label><input type="date" id="plan-until" required></div></div>
+<div class="field"><label for="plan-period">¿A qué período corresponde la dosis?</label><select id="plan-period"><option value="application">Una aplicación</option><option value="year">Total del año</option></select><small class="hint">Copia el período del documento técnico. El total anual no se divide automáticamente en aplicaciones.</small></div>
+<div id="product-rows"></div><button type="button" id="add-product" class="btn secondary small">+ Agregar otro producto</button>
+<div class="field" style="margin-top:18px"><label for="plan-notes">Indicaciones del técnico</label><textarea id="plan-notes" maxlength="1500" placeholder="Momento de aplicación, condiciones y observaciones."></textarea></div>
+<label class="checkbox"><input id="plan-confirm" type="checkbox" required><span>Confirmo que copié el producto, la dosis, la unidad y el período de una recomendación técnica correspondiente a este lote. La aplicación no verifica el documento.</span></label>
+<div class="actions"><button class="btn" type="submit">Guardar plan</button><button class="btn secondary" type="button" id="clear-plan">Nuevo / limpiar</button></div>
+</form><aside><section class="card"><div class="card-head"><div><div class="step">GUARDADOS EN ESTE NAVEGADOR</div><h2>Mis planes</h2></div><span id="plan-count" class="pill">0</span></div><div id="plan-list"></div></section><section class="card"><h3>Conserva una copia</h3><p class="tip">Exporta tus planes antes de cambiar de equipo o borrar los datos del navegador. No se envían a un servidor ni a GitHub.</p><div class="actions"><button id="export-plans" class="btn secondary small" type="button">Exportar planes</button><button id="import-plans" class="btn secondary small" type="button">Importar planes</button><input type="file" id="import-file" accept=".json,application/json" hidden></div></section></aside></div></section>
+<section id="tab-history" role="tabpanel" aria-labelledby="nav-history" hidden><div class="card guide"><div class="card-head"><div><h2>Historial de cálculos</h2><p class="muted">Hasta 50 consultas guardadas en este navegador.</p></div></div><div id="history-list"></div><div class="actions"><button class="btn secondary small" id="export-history" type="button">Descargar historial JSON</button><button class="text-btn danger" id="clear-history" type="button">Borrar historial</button></div></div></section>
+<section id="tab-guide" role="tabpanel" aria-labelledby="nav-guide" hidden><article class="card guide"><div class="step">GUÍA DE USO</div><h2>Del plan técnico al cálculo</h2><ol><li><strong>Registra la recomendación.</strong> En «Mis planes técnicos», copia los datos del documento emitido para tu lote. No ingreses dosis de nutrientes puros como si fueran dosis de producto.</li><li><strong>Indica la unidad y el período.</strong> La calculadora admite g de producto por planta o kg de producto por hectárea, para una aplicación o para el total del año.</li><li><strong>Ingresa los datos del cultivo.</strong> Selecciona el plan y escribe el número de plantas o el área que corresponda a ese mismo lote.</li><li><strong>Consulta el resultado.</strong> Verás cada producto por separado, su cantidad en kilogramos y el cálculo utilizado. Puedes imprimir o guardar un informe de texto.</li></ol><h3>¿Cómo calcula?</h3><p>Con dosis en g/planta: cantidad en kg = dosis × número de plantas ÷ 1000.<br>Con dosis en kg/ha: cantidad en kg = dosis × área en hectáreas.</p><p>No redondea a sacos de compra ni convierte el total anual en dosis por aplicación. Los valores se muestran con hasta seis decimales; el informe conserva la precisión numérica del cálculo.</p><h3>¿El análisis de suelo elige automáticamente el fertilizante?</h3><p>No en esta versión. Los datos de pH, materia orgánica, fósforo y potasio se conservan como registro. Elegir un fertilizante y su dosis requiere una recomendación técnica que considere las condiciones del cultivo. Un nombre de responsable registrado no equivale a una validación independiente.</p><h3>Los dos casos del taller</h3><p><strong>Caso A:</strong> lote con datos de suelo y sin recomendación. La salida es solicitar revisión técnica, sin mostrar dosis.<br><strong>Caso B:</strong> lote con datos distintos. La aplicación abre un plan para completar desde un documento técnico. El cálculo se habilita al contar con ese plan, no por cambiar el pH.</p><h3>Fuentes para consultar</h3><p><a href="https://publicaciones.cenicafe.org/index.php/avances_tecnicos/article/view/167" target="_blank" rel="noopener noreferrer">Sadeghian, 2018 · Interpretación de los resultados de análisis de suelo · Cenicafé, Avance 497</a></p><p><a href="https://publicaciones.cenicafe.org/index.php/avances_tecnicos/article/view/493" target="_blank" rel="noopener noreferrer">Sadeghian y González-Osorio, 2012 · Alternativas generales de fertilización para cafetales en la etapa de producción · Cenicafé, Avance 424</a></p><p class="tip">Referencias de consulta; no se han incorporado sus tablas como motor de dosificación. Este proyecto académico es independiente de Cenicafé.</p><h3>Datos y privacidad</h3><p>Los planes y el historial se guardan localmente mediante el navegador. No hay cuentas ni sincronización. En un equipo compartido, otras personas con acceso al navegador pueden verlos. El respaldo de planes y el historial se descargan por separado.</p><h3>Publicación en GitHub Pages</h3><p>Sube el archivo <strong>index.html</strong> a la raíz de tu repositorio. En GitHub abre <strong>Settings → Pages → Deploy from a branch → main → / (root) → Save</strong>. No necesitas instalar dependencias ni configurar claves. Consulta el README del paquete para el paso a paso completo.</p></article></section>
+</main><footer><span>Suelo Claro · Caso 01 · Suelos y fertilización</span><span>Proyecto académico · Versión 1.0 · Datos guardados en tu equipo</span></footer>
+<noscript><p>Activa JavaScript para utilizar la calculadora.</p></noscript>
+<script>(function (root) {
+  'use strict';
+  const stages = ['Producción', 'Levante', 'Renovación'];
+  const number = value => {
+    const s = String(value ?? '').trim();
+    if (!/^(?:\d+(?:[.,]\d*)?|[.,]\d+)$/.test(s)) return NaN;
+    return Number(s.replace(',', '.'));
+  };
+  const clean = (value, label, max = 180) => {
+    if (typeof value !== 'string' || !value.trim() || value.length > max) throw Error('Revisa ' + label + '.');
+    return value.trim();
+  };
+  const positive = (value, label) => {
+    const n = number(value);
+    if (!Number.isFinite(n) || n <= 0 || n > 1e9) throw Error(label + ' debe ser mayor que cero y menor o igual a 1.000.000.000.');
+    return n;
+  };
+  const dateOK = s => typeof s === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(s) && !isNaN(Date.parse(s + 'T12:00:00Z')) && new Date(s + 'T12:00:00Z').toISOString().slice(0, 10) === s;
+  function validatePlan(raw) {
+    const plan = {
+      id: clean(raw.id, 'el identificador', 100),
+      lot: clean(raw.lot, 'el nombre del lote', 100),
+      stage: clean(raw.stage, 'la etapa'),
+      analyst: clean(raw.analyst, 'el responsable técnico'),
+      source: clean(raw.source, 'la referencia de la recomendación', 500),
+      analysisRef: clean(raw.analysisRef, 'la referencia del análisis', 180),
+      issued: raw.issued, until: raw.until,
+      period: raw.period,
+      notes: typeof raw.notes === 'string' ? raw.notes.slice(0, 1500) : '',
+    };
+    if (!stages.includes(plan.stage)) throw Error('Selecciona una etapa válida.');
+    if (!dateOK(plan.issued) || !dateOK(plan.until) || plan.until < plan.issued) throw Error('Revisa las fechas de emisión y revisión del plan.');
+    if (!['application', 'year'].includes(plan.period)) throw Error('Selecciona el período de la dosis.');
+    if (!Array.isArray(raw.products) || raw.products.length < 1 || raw.products.length > 20) throw Error('Registra entre 1 y 20 productos.');
+    plan.products = raw.products.map(p => {
+      if (!['plant', 'area'].includes(p.basis)) throw Error('Unidad de dosis no válida.');
+      return {name: clean(p.name, 'el producto', 180), dose: positive(p.dose, 'La dosis'), basis: p.basis};
+    });
+    return plan;
+  }
+  function calculate(rawPlan, input, today) {
+    const plan = validatePlan(rawPlan);
+    if (!dateOK(today)) throw Error('No se pudo comprobar la fecha actual.');
+    if (today < plan.issued || today > plan.until) throw Error('El plan está fuera del período registrado. Solicita su revisión técnica.');
+    if (input.lot !== plan.lot || input.stage !== plan.stage || input.analysisRef !== plan.analysisRef) throw Error('El lote, la etapa o el análisis no coinciden con el plan.');
+    const needsPlant = plan.products.some(p => p.basis === 'plant');
+    const needsArea = plan.products.some(p => p.basis === 'area');
+    const plants = needsPlant ? positive(input.plants, 'El número de plantas') : null;
+    if (plants !== null && !Number.isSafeInteger(plants)) throw Error('El número de plantas debe ser entero.');
+    const area = needsArea ? positive(input.area, 'El área en hectáreas') : null;
+    const products = plan.products.map(p => {
+      const totalKg = p.basis === 'plant' ? p.dose * plants / 1000 : p.dose * area;
+      if (!Number.isFinite(totalKg) || totalKg > 1e12) throw Error('El total calculado es demasiado grande. Revisa los datos.');
+      return {...p, totalKg};
+    });
+    return {plan, plants, area, products, today};
+  }
+  function validateBackup(raw) {
+    if (!raw || raw.app !== 'suelo-claro' || raw.version !== 1 || !Array.isArray(raw.plans) || raw.plans.length > 200) throw Error('El archivo no es un respaldo compatible de Suelo Claro.');
+    const plans = raw.plans.map(validatePlan);
+    if (new Set(plans.map(p => p.id)).size !== plans.length) throw Error('El respaldo contiene identificadores repetidos.');
+    return plans;
+  }
+  const api = {number, positive, validatePlan, calculate, validateBackup, stages};
+  root.SueloCore = api;
+  if (typeof module !== 'undefined' && module.exports) module.exports = api;
+})(typeof globalThis !== 'undefined' ? globalThis : this);
+</script>
+<script>(function () {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const C = SueloCore;
+  const key = 'suelo-claro-v1';
+  let plans = [], history = [], current = null, storageOK = true;
+  const today = () => new Date().toLocaleDateString('sv-SE');
+  const uid = () => globalThis.crypto?.randomUUID?.() || 'plan-' + Date.now() + '-' + Math.random().toString(36).slice(2);
+  const fmt = n => new Intl.NumberFormat('es-CO', n > 0 && n < 0.000001 ? {notation: 'scientific', maximumSignificantDigits: 6} : {maximumFractionDigits: 6}).format(n);
+  const period = p => p === 'year' ? 'total del año' : 'por aplicación';
+  const node = (tag, text, cls) => {
+    const el = document.createElement(tag);
+    if (text !== undefined) el.textContent = text;
+    if (cls) el.className = cls;
+    return el;
+  };
+  function message(text, error = false) {
+    $('status').textContent = text;
+    $('status').className = 'status' + (error ? ' error' : '');
+    $('status').hidden = false;
+    $('status').scrollIntoView({block: 'nearest', behavior: 'smooth'});
+  }
+  function save() {
+    try {localStorage.setItem(key, JSON.stringify({app: 'suelo-claro', version: 1, plans, history})); storageOK = true; return true;}
+    catch (_) {storageOK = false; return false;}
+  }
+  function saveMessage(text) {
+    const ok = save();
+    message(ok ? text : text + ' No se pudo guardar en este navegador. Exporta una copia antes de cerrar.', !ok);
+  }
+  function showTab(name) {
+    document.querySelectorAll('[role="tabpanel"]').forEach(el => el.hidden = el.id !== 'tab-' + name);
+    document.querySelectorAll('[role="tab"]').forEach(el => {
+      const active = el.dataset.tab === name;
+      el.setAttribute('aria-selected', String(active)); el.tabIndex = active ? 0 : -1;
+    });
+    $('status').hidden = true;
+  }
+  document.querySelectorAll('[data-tab]').forEach(btn => {
+    btn.addEventListener('click', () => showTab(btn.dataset.tab));
+    btn.addEventListener('keydown', event => {
+      const tabs = [...document.querySelectorAll('[data-tab]')];
+      let i = tabs.indexOf(btn);
+      if (event.key === 'ArrowRight') i = (i + 1) % tabs.length;
+      else if (event.key === 'ArrowLeft') i = (i - 1 + tabs.length) % tabs.length;
+      else if (event.key === 'Home') i = 0;
+      else if (event.key === 'End') i = tabs.length - 1;
+      else return;
+      event.preventDefault(); showTab(tabs[i].dataset.tab); tabs[i].focus();
+    });
+  });
+  const emptyResult = $('result').cloneNode(true);
+  function bindNewPlan() {
+    const btn = $('result-new-plan');
+    if (btn) btn.onclick = () => {showTab('plans'); $('plan-lot').focus();};
+  }
+  function invalidate() {
+    current = null;
+    $('result').replaceChildren(...[...emptyResult.childNodes].map(n => n.cloneNode(true)));
+    bindNewPlan();
+  }
+  function renderPlans() {
+    const selected = $('plan-select').value;
+    $('plan-select').replaceChildren(new Option('Selecciona un plan registrado', ''));
+    plans.forEach(p => $('plan-select').append(new Option(p.lot + ' · ' + p.stage + ' · ' + p.analysisRef, p.id)));
+    if (plans.some(p => p.id === selected)) $('plan-select').value = selected;
+    $('plan-count').textContent = plans.length;
+    $('plan-list').replaceChildren();
+    if (!plans.length) $('plan-list').append(node('p', 'Todavía no tienes planes. Registra el primero con la recomendación técnica de tu lote.', 'tip'));
+    plans.forEach(p => {
+      const item = node('div', undefined, 'plan-item');
+      item.append(node('h3', p.lot + ' · ' + p.stage), node('p', p.products.map(x => x.name).join(' / ')), node('p', 'Revisión: ' + p.until + ' · ' + p.analyst));
+      if (p.until < today()) item.append(node('p', 'Requiere actualización técnica.', 'danger'));
+      const acts = node('div', undefined, 'actions');
+      const use = node('button', 'Usar plan', 'btn secondary small');
+      use.type = 'button'; use.onclick = () => { $('plan-select').value = p.id; selectPlan(); showTab('calculator'); $('plants').focus(); };
+      const edit = node('button', 'Editar', 'text-btn'); edit.type = 'button'; edit.onclick = () => editPlan(p);
+      const del = node('button', 'Eliminar', 'text-btn danger'); del.type = 'button';
+      del.onclick = () => {
+        if (!confirm('¿Eliminar el plan del lote ' + p.lot + '? Los cálculos anteriores seguirán en el historial.')) return;
+        plans = plans.filter(x => x.id !== p.id);
+        if ($('plan-id').value === p.id) resetPlan();
+        renderPlans(); selectPlan(); saveMessage('Plan eliminado.');
+      };
+      acts.append(use, edit, del); item.append(acts); $('plan-list').append(item);
+    });
+  }
+  function selectPlan() {
+    invalidate();
+    const p = plans.find(p => p.id === $('plan-select').value);
+    $('lot').value = p?.lot || ''; $('stage').value = p?.stage || '';
+    $('plants').value = ''; $('area').value = '';
+    const needsPlant = p?.products.some(x => x.basis === 'plant');
+    const needsArea = p?.products.some(x => x.basis === 'area');
+    $('plants').disabled = !!p && !needsPlant;
+    $('area').disabled = !!p && !needsArea;
+    $('plants-hint').textContent = p && !needsPlant ? 'No se utiliza en este plan.' : 'Necesario si la dosis está en g/planta.';
+    $('area-hint').textContent = p && !needsArea ? 'No se utiliza en este plan.' : 'Necesaria si la dosis está en kg/ha.';
+    ['ph', 'mo', 'p', 'k'].forEach(id => $(id).value = '');
+  }
+  $('plan-select').onchange = selectPlan;
+  $('go-new-plan').onclick = () => {showTab('plans'); $('plan-lot').focus();};
+  $('calculator-form').addEventListener('input', invalidate);
+  function productRow(product = {}) {
+    const row = node('div', undefined, 'product-row');
+    row.innerHTML = '<div class="product-row-head"><strong>Producto</strong><button class="text-btn danger remove-product" type="button">Quitar</button></div><div class="field"><label>Nombre y formulación del fertilizante<input class="product-name-input" required maxlength="180" placeholder="Tal como aparece en la recomendación"></label></div><div class="grid"><div class="field"><label>Dosis de producto<input class="product-dose" required inputmode="decimal" placeholder="Según recomendación"></label></div><div class="field"><label>Unidad<select class="product-basis"><option value="plant">g de producto / planta</option><option value="area">kg de producto / ha</option></select></label></div></div>';
+    row.querySelector('.product-name-input').value = product.name || '';
+    row.querySelector('.product-dose').value = product.dose ?? '';
+    row.querySelector('.product-basis').value = product.basis || 'plant';
+    row.querySelector('.remove-product').onclick = () => {
+      if ($('product-rows').children.length <= 1) return message('El plan necesita al menos un producto.', true);
+      row.remove();
+    };
+    $('product-rows').append(row);
+  }
+  $('add-product').onclick = () => {
+    if ($('product-rows').children.length >= 20) return message('Puedes registrar hasta 20 productos por plan.', true);
+    productRow();
+  };
+  function resetPlan() {
+    $('plan-form').reset(); $('plan-id').value = ''; $('plan-title').textContent = 'Registrar un plan técnico';
+    $('product-rows').replaceChildren(); productRow(); $('plan-issued').value = today();
+  }
+  $('clear-plan').onclick = resetPlan;
+  function editPlan(p) {
+    resetPlan();
+    const fields = {id:'id',lot:'lot',stage:'stage',analysis:'analysisRef',analyst:'analyst',source:'source',issued:'issued',until:'until',period:'period',notes:'notes'};
+    Object.entries(fields).forEach(([field, prop]) => $('plan-' + field).value = p[prop]);
+    $('plan-title').textContent = 'Editar plan técnico';
+    $('product-rows').replaceChildren(); p.products.forEach(productRow);
+    $('plan-confirm').checked = false; showTab('plans'); $('plan-lot').focus();
+  }
+  $('plan-form').onsubmit = event => {
+    event.preventDefault();
+    try {
+      const p = C.validatePlan({
+        id: $('plan-id').value || uid(), lot:$('plan-lot').value, stage:$('plan-stage').value,
+        analysisRef:$('plan-analysis').value, analyst:$('plan-analyst').value, source:$('plan-source').value,
+        issued:$('plan-issued').value, until:$('plan-until').value, period:$('plan-period').value, notes:$('plan-notes').value,
+        products:[...$('product-rows').children].map(row => ({name:row.querySelector('.product-name-input').value,dose:row.querySelector('.product-dose').value,basis:row.querySelector('.product-basis').value})),
+      });
+      if (!$('plan-confirm').checked) throw Error('Confirma que copiaste los datos de una recomendación técnica.');
+      const existing = plans.findIndex(x => x.id === p.id);
+      if (existing === -1 && plans.length >= 200) throw Error('Se alcanzó el máximo de 200 planes. Exporta y elimina los que no necesites.');
+      if (existing >= 0) plans[existing] = p; else plans.push(p);
+      renderPlans(); $('plan-select').value = p.id; selectPlan(); resetPlan(); showTab('calculator');
+      saveMessage('Plan guardado. Ingresa los datos del cultivo para calcular.');
+    } catch (e) {message(e.message, true);}
+  };
+  function soilRecord() {
+    const data = {};
+    const ranges = {ph:[0,14,'pH'],mo:[0,100,'materia orgánica'],p:[0,1e6,'fósforo'],k:[0,1e4,'potasio']};
+    for (const [id,[min,max,label]] of Object.entries(ranges)) {
+      const value = $(id).value.trim();
+      if (!value) continue;
+      const n = C.number(value);
+      if (!Number.isFinite(n) || n < min || n > max) throw Error('Revisa el dato de ' + label + ' y su unidad.');
+      data[id] = n;
+    }
+    return data;
+  }
+  function renderResult(r) {
+    const el = $('result'); el.replaceChildren();
+    el.append(node('div', '02 / RESULTADO', 'step'), node('span', period(r.plan.period), 'pill'), node('h2', r.plan.lot));
+    el.querySelector('h2').style.marginTop = '14px';
+    el.append(node('p', 'Cantidades calculadas con la recomendación registrada.', 'tip'));
+    r.products.forEach(p => {
+      const part = node('div', undefined, 'product');
+      const qty = node('div', fmt(p.totalKg), 'qty'); qty.append(node('small', ' kg'));
+      const f = p.basis === 'plant' ? `${fmt(p.dose)} g/planta × ${fmt(r.plants)} plantas ÷ 1000` : `${fmt(p.dose)} kg/ha × ${fmt(r.area)} ha`;
+      part.append(node('div', p.name, 'product-name'), qty, node('div', f, 'formula')); el.append(part);
+    });
+    if (r.plan.period === 'year') el.append(node('p', 'Total anual. La distribución y las fechas de aplicación deben venir del plan técnico.', 'notice'));
+    const meta = node('div', undefined, 'metadata');
+    [['Etapa',r.plan.stage],['Análisis',r.plan.analysisRef],['Responsable registrado',r.plan.analyst],['Fuente',r.plan.source],['Plan emitido',r.plan.issued],['Revisión del plan',r.plan.until],['Fecha del cálculo',r.today]].forEach(([k,v])=>meta.append(node('div', k + ': ' + v)));
+    if (r.plan.notes) meta.append(node('div', 'Indicaciones: ' + r.plan.notes));
+    if (Object.keys(r.soil || {}).length) meta.append(node('div', 'Registro de suelo (no determina la dosis): ' + Object.entries(r.soil).map(([k,v]) => ({ph:'pH',mo:'MO (%)',p:'P (mg/kg)',k:'K (cmolc/kg)'})[k] + ' ' + fmt(v)).join(' · ')));
+    el.append(meta);
+    const actions = node('div', undefined, 'actions no-print');
+    const print = node('button', 'Imprimir / PDF', 'btn secondary small'); print.type = 'button'; print.onclick = () => window.print();
+    const download = node('button', 'Descargar informe', 'btn secondary small'); download.type = 'button'; download.onclick = () => downloadText(report(r), 'suelo-claro-informe.txt', 'text/plain;charset=utf-8');
+    actions.append(print,download);el.append(actions);
+  }
+  function report(r) {
+    return ['SUELO CLARO — INFORME DE CÁLCULO','Proyecto académico de I+D+i','Fecha: '+r.today,'Lote: '+r.plan.lot,'Etapa: '+r.plan.stage,'Período: '+period(r.plan.period),'Análisis: '+r.plan.analysisRef,'Responsable registrado: '+r.plan.analyst,'Fuente: '+r.plan.source,'Emisión: '+r.plan.issued,'Revisión: '+r.plan.until,'',...r.products.map(p => `${p.name}: ${p.totalKg} kg (${p.dose} ${p.basis === 'plant' ? 'g/planta × '+r.plants+' plantas ÷ 1000' : 'kg/ha × '+r.area+' ha'}).`),'','Indicaciones: '+(r.plan.notes || 'Sin indicaciones adicionales registradas.'),'Registro de suelo (no determina dosis): '+JSON.stringify(r.soil || {}),'','El fertilizante y la dosis provienen del plan ingresado por el usuario. La aplicación no verifica la recomendación ni diagnostica el suelo. Si es total anual, no equivale a una dosis por aplicación.'].join('\n');
+  }
+  function downloadText(content, filename, type = 'application/json') {
+    const url = URL.createObjectURL(new Blob([content], {type}));
+    const a = node('a'); a.href = url; a.download = filename; document.body.append(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(url),1000);
+  }
+  $('calculator-form').onsubmit = event => {
+    event.preventDefault(); invalidate();
+    try {
+      const plan = plans.find(p => p.id === $('plan-select').value);
+      if (!plan) throw Error('Primero registra y selecciona un plan técnico. Sin una recomendación no se genera una dosis.');
+      const soil = soilRecord();
+      const result = C.calculate(plan, {lot:$('lot').value,stage:$('stage').value,analysisRef:plan.analysisRef,plants:$('plants').value,area:$('area').value},today());
+      result.soil = soil;
+      current = result; renderResult(result);
+      history.unshift(JSON.parse(JSON.stringify(result))); history = history.slice(0,50); renderHistory();
+      const ok = save();
+      if (!ok) message('Cálculo listo. No se pudo guardar en el navegador; descarga el informe.',true);
+      else $('status').hidden = true;
+      $('result').scrollIntoView({behavior:'smooth',block:'nearest'});
+    } catch (e) {message(e.message,true);}
+  };
+  function renderHistory() {
+    $('history-list').replaceChildren();
+    if (!history.length) $('history-list').append(node('p','Aún no has realizado cálculos.','muted'));
+    history.forEach(r => {
+      const el = node('div',undefined,'history-row');
+      el.append(node('strong',r.plan.lot+' · '+r.today),node('p',period(r.plan.period)+' · '+r.plan.analysisRef),node('p',r.products.map(p => p.name+': '+fmt(p.totalKg)+' kg').join(' / ')));
+      const btn = node('button','Descargar este informe','text-btn');btn.type='button';btn.onclick=()=>downloadText(report(r),'suelo-claro-informe.txt','text/plain;charset=utf-8');el.append(btn);$('history-list').append(el);
+    });
+  }
+  $('export-plans').onclick = () => downloadText(JSON.stringify({app:'suelo-claro',version:1,plans},null,2),'suelo-claro-planes.json');
+  $('export-history').onclick = () => downloadText(JSON.stringify({app:'suelo-claro',version:1,history},null,2),'suelo-claro-historial.json');
+  $('import-plans').onclick = () => $('import-file').click();
+  $('import-file').onchange = async event => {
+    const file = event.target.files[0];if(!file)return;
+    try {
+      if (file.size > 2*1024*1024) throw Error('El archivo supera el límite de 2 MB.');
+      const incoming = C.validateBackup(JSON.parse(await file.text()));
+      if (!confirm('¿Importar '+incoming.length+' planes? Se agregarán como copias y se conservarán los actuales.')) return;
+      if (plans.length+incoming.length>200) throw Error('La importación superaría los 200 planes.');
+      plans.push(...incoming.map(p=>({...p,id:uid()})));renderPlans();selectPlan();saveMessage('Planes importados. Verifica sus referencias y fechas antes de usarlos.');
+    } catch(e){message('No se importó el archivo. '+e.message,true);}finally{event.target.value='';}
+  };
+  $('clear-history').onclick = () => {
+    if (!confirm('¿Borrar el historial de este navegador? Los planes se conservarán.')) return;
+    history=[];renderHistory();saveMessage('Historial borrado.');
+  };
+  function demo(which) {
+    $('plan-select').value='';selectPlan();
+    const a = which === 'a';
+    $('lot').value = a ? 'Lote A · demostración' : 'Lote B · demostración';$('stage').value='Producción';
+    $('plants').value = a ? '4000' : '3000';$('area').value='1';
+    $('ph').value=a?'4,7':'5,3';$('mo').value=a?'4':'8';$('p').value=a?'8':'22';$('k').value=a?'0,15':'0,35';
+    if(a){
+      const box=$('result');box.replaceChildren(node('div','CASO A / DATOS SIMULADOS','step'),node('h2','Falta una recomendación técnica'),node('p','Los datos del análisis están registrados. El siguiente paso es obtener una recomendación para este lote. No se calcula fertilizante ni cantidad solo con estos datos.'));
+      message('Caso A: demuestra la ruta de información incompleta. No se ha guardado ningún plan.');
+    }else{
+      resetPlan();$('plan-lot').value='Lote B · demostración';$('plan-analysis').value='Informe simulado B';
+      showTab('plans');message('Caso B: completa el formulario con una recomendación técnica documentada. No se han inventado productos ni dosis.');
+    }
+  }
+  $('demo-a').onclick=()=>demo('a');$('demo-b').onclick=()=>demo('b');
+  // Load only compatible local records. Imported files never execute code or HTML.
+  try {
+    const raw = localStorage.getItem(key);
+    if(raw){
+      const saved=JSON.parse(raw);plans=C.validateBackup(saved);
+      history=Array.isArray(saved.history)?saved.history.slice(0,50).filter(r=>{
+        try {
+          const checked=C.calculate(r.plan,{lot:r.plan.lot,stage:r.plan.stage,analysisRef:r.plan.analysisRef,plants:r.plants,area:r.area},r.today);
+          return JSON.stringify(checked.products)===JSON.stringify(r.products);
+        }catch(_){return false;}
+      }):[];
+    }
+  } catch(_){storageOK=false;message('No fue posible leer los datos guardados. Puedes importar un respaldo o trabajar en esta sesión.',true);}
+  resetPlan();renderPlans();renderHistory();bindNewPlan();
+})();
+</script>
+</body></html>
